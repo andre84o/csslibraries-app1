@@ -38,10 +38,11 @@ export default function Home() {
         textDecoration: 'underline',
         display: 'block',
         marginBottom: '20px',
-        color: '#0070f3'
+        color: '#0070f3',
+        textAlign: 'center'
       }}
     >
-      Go to Random User App →
+      Random User App
     </a>
       <Title>📝 My Todo List</Title>
       <InputContainer>
