@@ -30,6 +30,19 @@ export default function Home() {
 
   return (
     <Container>
+         <a
+      href="https://csslibraries-app2.vercel.app/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        textDecoration: 'underline',
+        display: 'block',
+        marginBottom: '20px',
+        color: '#0070f3'
+      }}
+    >
+      Go to Random User App →
+    </a>
       <Title>📝 My Todo List</Title>
       <InputContainer>
         <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Add a task..." />
