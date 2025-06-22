@@ -1,0 +1,40 @@
+@keyframes goldSpin {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.ButtonPage {
+  display: flex;
+  padding: 30px 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-color: transparent;
+  width: 100%;
+}
+
+.fancyLink {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.fancyLink::after {
+  content: "";
+  border: 2px;
+  height: 10px;
+  width: 100%;
+  border-color: red;
+  position: absolute;
+}

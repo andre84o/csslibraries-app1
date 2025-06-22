@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Todo } from "@/interfaces/todo";
 import TodoItem from "@/components/TodoItem";
 import { Container, Title, InputContainer, Input, Button } from "@/components/TodoLayout";
+import styles from "./homepage.module.css"
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -24,34 +25,45 @@ export default function Home() {
     setInput("");
   };
 
+  const deleteTodo = (id: number) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
   const toggleTodo = (id: number) => {
     setTodos(todos.map(todo => todo.id === id ? { ...todo, done: !todo.done } : todo));
   };
 
   return (
     <Container>
-         <a
-      href="https://csslibraries-app2.vercel.app/"
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        textDecoration: 'underline',
-        display: 'block',
-        marginBottom: '20px',
-        color: '#0070f3',
-        textAlign: 'center'
-      }}
-    >
-      Random User App
-    </a>
+      <button className={styles.ButtonPage}>
+      <a
+        href="https://csslibraries-app2.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.fancyLink}
+      >
+        Go to: Random User App
+      </a>
+      </button>
+
       <Title>📝 My Todo List</Title>
+
       <InputContainer>
-        <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Add a task..." />
+        <Input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Add a task..."
+        />
         <Button onClick={addTodo}>Add</Button>
       </InputContainer>
 
       {todos.map(todo => (
-        <TodoItem key={todo.id} todo={todo} toggleTodo={toggleTodo} />
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          toggleTodo={toggleTodo}
+          deleteTodo={deleteTodo}
+        />
       ))}
     </Container>
   );
