@@ -35,6 +35,7 @@ export default function Home() {
 
   return (
     <Container>
+      <div className={styles.outerWrapper}>
       <button className={styles.ButtonPage}>
       <a
         href="https://csslibraries-app2.vercel.app/"
@@ -45,6 +46,7 @@ export default function Home() {
         Go to: Random User App
       </a>
       </button>
+      </div>
 
       <Title>📝 My Todo List</Title>
 
