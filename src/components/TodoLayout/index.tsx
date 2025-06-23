@@ -29,10 +29,11 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   padding: 10px 20px;
-  background-color: #4caf50;
+  background-color: #7FC29B;
   color: white;
   border: none;
   cursor: pointer;
+  border-radius: 10px;
 
   &:hover {
     background-color: #45a049;

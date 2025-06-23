@@ -4,6 +4,8 @@ import { Todo } from "@/interfaces/todo";
 import TodoItem from "@/components/TodoItem";
 import { Container, Title, InputContainer, Input, Button } from "@/components/TodoLayout";
 import styles from "./homepage.module.css";
+import { MdAdsClick } from "react-icons/md";
+
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -56,6 +58,7 @@ export default function Home() {
     <Container>
       <div className={styles.outerWrapper}>
         <button className={styles.ButtonPage}>
+          <MdAdsClick size={25} color="white" className={styles.BlinkingIcon}/>
           <a
             href="https://csslibraries-app2.vercel.app/"
             target="_blank"
