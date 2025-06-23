@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Todo } from "@/interfaces/todo";
 import TodoItem from "@/components/TodoItem";
 import { Container, Title, InputContainer, Input, Button } from "@/components/TodoLayout";
-import styles from "./homepage.module.css"
+import styles from "./homepage.module.css";
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -14,38 +14,57 @@ export default function Home() {
     if (saved) setTodos(JSON.parse(saved));
   }, []);
 
+  
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
   const addTodo = () => {
     if (!input.trim()) return;
-    const newTodo: Todo = { id: Date.now(), text: input, done: false };
+
+    const newTodo: Todo = {
+      id: Date.now(),
+      text: input,
+      done: false,
+      date: undefined
+    };
+
     setTodos([...todos, newTodo]);
     setInput("");
   };
+
 
   const deleteTodo = (id: number) => {
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
+  
   const toggleTodo = (id: number) => {
-    setTodos(todos.map(todo => todo.id === id ? { ...todo, done: !todo.done } : todo));
+    setTodos(todos.map(todo =>
+      todo.id === id ? { ...todo, done: !todo.done } : todo
+    ));
+  };
+
+  
+  const setDateForTodo = (id: number, date: string) => {
+    setTodos(todos.map(todo =>
+      todo.id === id ? { ...todo, date } : todo
+    ));
   };
 
   return (
     <Container>
       <div className={styles.outerWrapper}>
-      <button className={styles.ButtonPage}>
-      <a
-        href="https://csslibraries-app2.vercel.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.fancyLink}
-      >
-        Go to: Random User App
-      </a>
-      </button>
+        <button className={styles.ButtonPage}>
+          <a
+            href="https://csslibraries-app2.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.fancyLink}
+          >
+            Go to: Random User App
+          </a>
+        </button>
       </div>
 
       <Title>📝 My Todo List</Title>
@@ -65,6 +84,7 @@ export default function Home() {
           todo={todo}
           toggleTodo={toggleTodo}
           deleteTodo={deleteTodo}
+          setDateForTodo={setDateForTodo}
         />
       ))}
     </Container>

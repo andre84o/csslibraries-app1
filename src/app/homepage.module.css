@@ -23,7 +23,6 @@
 }
 
 .ButtonPage:hover {
-   background-color: #464543;  /* Guld */
-  color: black;   
-  
+   background-color: #464543;
+   color: black;
 }

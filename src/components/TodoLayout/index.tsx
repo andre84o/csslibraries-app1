@@ -24,6 +24,7 @@ export const Input = styled.input`
   flex: 1;
   padding: 10px;
   font-size: 16px;
+  font-weight: bold;
 `;
 
 export const Button = styled.button`
